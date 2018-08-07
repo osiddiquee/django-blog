@@ -3,13 +3,19 @@ from myblog.models import Post
 from myblog.models import Category
 
 # Register your models here.
-admin.site.register(Post)
-admin.site.register(Category)
+#admin.site.register(Post)
+#admin.site.register(Category)
+
+class CategoryInline(admin.TabularInline):
+    model = Category.post.through
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    inlines = [
+        CategoryInline,
+    ]
 
 
-class CategoryAdmin(admin.ModelAdmin):
-    fields = ('name', 'description')
-
-
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     exclude = ('Post',)

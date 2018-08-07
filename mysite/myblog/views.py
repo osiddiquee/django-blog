@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from myblog.models import Post
+from myblog.forms import PostForm
 
 
 # Create your views here.
@@ -31,3 +32,7 @@ def detail_view(request, post_id):
         raise Http404
     context = {'post': post}
     return render(request, 'detail.html', context)
+
+
+def form_view(request):
+    pass
