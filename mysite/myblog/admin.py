@@ -7,7 +7,7 @@ from myblog.models import Category
 #admin.site.register(Category)
 
 class CategoryInline(admin.TabularInline):
-    model = Category.post.through
+    model = Category.posts.through
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -18,4 +18,4 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('Post',)
+    exclude = ('posts',)
